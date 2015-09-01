@@ -1,5 +1,5 @@
-###Spring-XD Dockerized with 3 commands
-We at EMC and the federation (VMWare/Pivotal) are using Spring XD heavily on some of our large scale big data projects. To make it more simpler get up an running with Spring XD I was tasked to write a docker compose based spring xd development setup so that developers can just do *"docker-compose up"* and they are good to go.
+###Spring-XD Docker Composition
+We at EMC and the federation (VMWare/Pivotal) are using Spring XD heavily on some of our large scale big data projects. It is very easy to setup Spring XD cluster up and running. However, to make it even more simpler to get up an running I was tasked to write a docker compose based spring xd development setup so that developers can just do a *"docker-compose up"* and they are good to go.
 
 Following URL points to a github project which does exactly that.
 
@@ -166,5 +166,12 @@ The Spring XD in this composition uses `rabbit` as its transport layer. Therefor
 
 - To make changes to the configuration there are several things you can do
 
-1. You can modify springxd.env to make changes to the configuration that can be done using environment variables.
+> You can modify springxd.env to make changes to the configuration that can be done using environment variables.
 
+> You probably would notice that xddata is a stopped container and it never runs, so how do you modify the data inside it. The volumes inside the xddata container is mapped on to the xdadmin, xdcontainer nodes. You can SSH into any of the mounted containers using the above described way and modify the contents of the files.
+
+> Finally if you want use your MacOS folder as spring xd config folder, then you can use Kitematics Volume tab under settings and change the config folder mount point to your folder. Following image describes the same technique
+
+![Alt text](./images/change-config.png)
+
+You are welcome to create issues and PR on the project to make it more useful for other non-trivial use cases.
